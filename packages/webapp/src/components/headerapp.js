@@ -2,7 +2,6 @@ import mount from 'header/HeaderApp';
 import React, { useRef, useEffect, useContext } from 'react';
 import { UNSAFE_NavigationContext, useLocation, useNavigate } from 'react-router-dom';
 
-
 const HeaderApp = (props) => {
   console.log('headerapp props', props);
   const ref = useRef(null);
