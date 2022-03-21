@@ -5,21 +5,16 @@ const deps = require("./package.json").dependencies;
 // require("dotenv").config({ path: "./.env" });
 const buildDate = new Date().toLocaleString();
 
-
 const domain = process.env.PRODUCTION_DOMAIN;
 
 module.exports = (env, argv) => {
-  // const isProduction = argv.mode === "production";
- //  console.log(argv.mode);
- // console.log({ isProduction });
 
- console.log('process', process.env);
   return {
     entry: "./src/index.ts",
     mode: "production",
     output: {
       filename: '[name].[contenthash].js',
- //     publicPath: 'http://localhost:3000/'
+      //     publicPath: 'http://localhost:3000/'
     },
     resolve: {
       extensions: [".ts", ".tsx", ".js"],
@@ -66,7 +61,7 @@ module.exports = (env, argv) => {
           // header: 'header@http://localhost:3004/remoteEntry.js',
 
           auth: `auth@${domain}/auth/remoteEntry.js`,
-          dashboard:`dashboard@${domain}/dashboard/remoteEntry.js`,
+          dashboard: `dashboard@${domain}/dashboard/remoteEntry.js`,
           header: `header@${domain}/header/remoteEntry.js`,
         },
         shared: {
