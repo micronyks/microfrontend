@@ -14,7 +14,7 @@ module.exports = (env, argv) => {
     mode: "production",
     output: {
       filename: '[name].[contenthash].js',
-      //     publicPath: 'http://localhost:3000/'
+      publicPath: '/container/latest'
     },
     resolve: {
       extensions: [".ts", ".tsx", ".js"],
