@@ -10,7 +10,7 @@ on:
 
 defaults:
   run:
-    working-directory: pakcages/webapp
+    working-directory: packages/webapp
 
 jobs:
   build:
