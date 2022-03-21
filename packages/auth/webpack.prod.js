@@ -10,7 +10,7 @@ module.exports = {
     mode: 'production',
     output: {
         filename: '[name].[contenthash].js',
-        //   publicPath:'http://localhost:3001/'
+        publicPath:'/auth/latest/'
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.js'],

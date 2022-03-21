@@ -14,7 +14,7 @@ module.exports = (env, argv) => {
     mode: "production",
     output: {
       filename: '[name].[contenthash].js',
-      publicPath: '/container/latest'
+      publicPath: '/container/latest/'
     },
     resolve: {
       extensions: [".ts", ".tsx", ".js"],
@@ -60,9 +60,10 @@ module.exports = (env, argv) => {
           // dashboard: 'dashboard@http://localhost:3003/remoteEntry.js',
           // header: 'header@http://localhost:3004/remoteEntry.js',
 
-          auth: `auth@${domain}/auth/remoteEntry.js`,
-          dashboard: `dashboard@${domain}/dashboard/remoteEntry.js`,
-          header: `header@${domain}/header/remoteEntry.js`,
+          auth: `auth@${domain}/auth/latest/remoteEntry.js`,
+          dashboard: `dashboard@${domain}/dashboard/latest/remoteEntry.js`,
+          header: `header@${domain}/header/latest/remoteEntry.js`,
+          common: `common@${domain}/common/latest/remoteEntry.js`
         },
         shared: {
           ...deps,

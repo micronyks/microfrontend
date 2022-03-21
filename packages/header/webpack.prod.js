@@ -8,7 +8,7 @@ module.exports = {
     mode: 'production',
     output: {
         filename: '[name].[contenthash].js',
-        // publicPath: 'http://localhost:3004/'
+        publicPath: '/header/latest/'
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.js'],
