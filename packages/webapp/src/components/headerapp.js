@@ -13,21 +13,18 @@ const HeaderApp = (props) => {
     const { onParentNavigate } = mount(ref.current, {
       initialPath: location.pathname,
       onNavigate: (result) => {
-        console.log('webapp noticed route change', result.location.pathname);
         const { pathname } = location;
         if (pathname !== result.location.pathname) {
           navigator.push(result.location.pathname);
         }
       },
       sendNavigationTo: (navigateTo) => {
-        console.log('webapp received navigation request from header', navigateTo);
         const pathname = location.pathname;
         if (pathname !== navigateTo) {
           navigation(navigateTo);
         }
       },
       onProfileMenuClickHandler: (selectedMenuItem) => {
-        console.log('webapp received selected menu item from header', selectedMenuItem);
         props.onProfileMenuClickHandler(selectedMenuItem);
       }
     },

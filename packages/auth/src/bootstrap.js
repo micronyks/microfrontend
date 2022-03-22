@@ -9,7 +9,6 @@ import App from './App';
 
 const mount = (el, { onNavigate, defaultHistory, initialPath, onAuthChange }, selectedMenuItem) => {
 
-
   const history = defaultHistory || createMemoryHistory({
     initialEntries: [initialPath]
   });

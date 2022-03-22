@@ -12,12 +12,13 @@ const authSlice = createSlice({
   reducers: {
     login(state) {
       state.isAuthenticated = true;
-      localStorage.setItem('wideui_isAuthenticated', 'true');
+      const auth = { isAuthenticated: true };
+      localStorage.setItem('wideui_auth', JSON.stringify(auth));
     },
     logout(state) {
-      console.log('logoutstore');
       state.isAuthenticated = false;
-      localStorage.setItem('wideui_isAuthenticated', 'false');
+      const auth = { isAuthenticated: false };
+      localStorage.setItem('wideui_auth', JSON.stringify(auth));
     },
   },
 });

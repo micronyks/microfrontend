@@ -9,8 +9,6 @@ import DashboardMapViewComponent from './components/dashboard-map-view.component
 
 const App: React.FC<{ history: any }> = (props) => {
 
-  console.log('dashboar_App_component', props.history);
-
   const [state, setState] = useState({
     action: props.history.action,
     location: props.history.location

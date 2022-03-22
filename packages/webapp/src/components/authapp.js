@@ -14,7 +14,6 @@ const AuthApp = (props) => {
     const { onParentNavigate } = mount(ref.current, {
       initialPath: location.pathname,
       onNavigate: (result) => {
-        console.log('webapp noticed route change', result.location.pathname);
         const { pathname } = location;
         if (pathname !== result.location.pathname) {
           navigator.push(result.location.pathname);

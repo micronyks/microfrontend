@@ -21,14 +21,17 @@ const notification = {
 
 
 const App: React.FC = () => {
+  let localStorageData: any = null;
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [selectedMenuItem, setSelectedMenuItem] = useState('');
   const navigate = useNavigate();
 
-  // const localStorageData = JSON.parse(JSON.stringify(localStorage.getItem('wideui_isAuthenticated')) || '');
+  if (localStorage.getItem('wideui_auth')) {
+    localStorageData = JSON.parse(localStorage?.getItem('wideui_auth') || '');
+  }
 
   useEffect(() => {
-    if (isAuthenticated) {
+    if (isAuthenticated || localStorageData?.isAuthenticated) {
       setIsAuthenticated(true);
     } else {
       setIsAuthenticated(false);
@@ -36,8 +39,9 @@ const App: React.FC = () => {
   }, [isAuthenticated]);
 
   const onProfileMenuClickHandler = (value: string) => {
-    console.log('cg', value);
     if (value === 'logout') {
+      const auth = { isAuthenticated: false };
+      localStorage.setItem('wideui_auth', JSON.stringify(auth));
       navigate('/auth/login');
       setSelectedMenuItem(value);
     }
