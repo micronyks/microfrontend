@@ -1,8 +1,8 @@
 var fs = require("fs-extra");
 const path = require("path")
 
-var source = '../../wide ui/';
-var destination = `../../backup/${formatDate(new Date())}_${formatTime(new Date())}`;
+var source = '../../../MFE/';
+var destination = `../../../backup/${formatDate(new Date())}_${formatTime(new Date())}`;
 
 function padTo2Digits(num) {
     return num.toString().padStart(2, '0');
