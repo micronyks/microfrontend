@@ -2,7 +2,6 @@
 import { useNavigate } from 'react-router-dom'
 import './login.component.css';
 
-
 // custom imports
 import { ROUTE } from '../core/constants/route.constant';
 import Button from '@mui/material/Button/Button';
@@ -24,6 +23,9 @@ const LoginComponent = () => {
     }
 
     return <div className="login-app-container">
+        <div className="login-app">
+            <Button variant="contained"  onClick={loginHandler}> Login </Button>
+        </div>
         <div className="login-app">
             <Button variant="contained"  onClick={loginHandler}> Login </Button>
         </div>
