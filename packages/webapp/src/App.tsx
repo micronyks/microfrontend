@@ -4,7 +4,6 @@ import './App.css';
 
 import ErrorBoundary from "./components/error-boundary.component";
 
-
 // const HeaderApp = React.lazy(() => import("./components/headerapp"));
 import HeaderApp from "./components/headerapp";
 const AuthApp = React.lazy(() => import("./components/authapp"));
@@ -12,13 +11,11 @@ const DashboardApp = React.lazy(() => import("./components/dashboardapp"));
 
 // import NotificationModule from "common/NotificationModule";
 
-
 const notification = {
   title: 'first notification',
   description: 'My First ever notification created !',
   color: 'red'
 }
-
 
 const App: React.FC = () => {
   let localStorageData: any = null;

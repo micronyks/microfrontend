@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux';
 import { authActions } from '../core/store/auth.store';
 import { useRef, useState } from 'react';
 import { TextField, Typography } from '@mui/material';
+import { authenticateUser } from '../core/apis/authentication';
 
 const isEmpty = (value: string) => value.trim() === '';
 
@@ -40,11 +41,10 @@ const LoginComponent = () => {
     //     setIsEmailValid(!isEmpty(inputEmailRef.current!.value));
     // }
 
-    const confirmHandler = (event: any) => {
+    const confirmHandler = async (event: any) => {
         event.preventDefault();
 
-        dispatch(authActions.login());
-        navigate(ROUTE.DASHBOARD);
+
 
         const enteredEmailIsValid = !isEmpty(inputEmailRef.current!.value);
         const enteredPasswordIsValid =
@@ -61,11 +61,12 @@ const LoginComponent = () => {
             return;
         } else {
 
-            alert('valid',);
-            console.log(inputEmailRef.current!.value, inputPasswordRef.current!.value)
-
+           const result = await authenticateUser({ email: inputEmailRef.current!.value, password: inputPasswordRef.current!.value })
+           console.log(result);
+            //  dispatch(authActions.login());
+            // navigate(ROUTE.DASHBOARD);
             // make API call to fetch & validate login detail
-            
+
         }
     };
 
