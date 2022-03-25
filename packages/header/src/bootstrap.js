@@ -7,6 +7,7 @@ import App from './App';
 
 export function mount(el, { onNavigate, defaultHistory, initialPath, sendNavigationTo, onProfileMenuClickHandler }, isAuthenticated) {
 
+  console.log('headerapp: mount', isAuthenticated);
   const navigateTo = (routeTo) => {
     if (sendNavigationTo) {
       sendNavigationTo(routeTo);
@@ -28,10 +29,10 @@ export function mount(el, { onNavigate, defaultHistory, initialPath, sendNavigat
     history.listen(onNavigate);
   }
 
-  ReactDOM.render(<App history={history} 
-                        navigateTo={navigateTo} 
-                        profileMenuClickHandler={profileMenuClickHandler} 
-                        isAuthenticated={isAuthenticated}
+  ReactDOM.render(<App history={history}
+    navigateTo={navigateTo}
+    profileMenuClickHandler={profileMenuClickHandler}
+    isAuthenticated={isAuthenticated}
   />, el);
 
   return {

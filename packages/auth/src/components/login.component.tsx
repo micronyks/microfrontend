@@ -44,8 +44,6 @@ const LoginComponent = () => {
     const confirmHandler = async (event: any) => {
         event.preventDefault();
 
-
-
         const enteredEmailIsValid = !isEmpty(inputEmailRef.current!.value);
         const enteredPasswordIsValid =
             !isEmpty(inputPasswordRef.current!.value);
@@ -61,9 +59,10 @@ const LoginComponent = () => {
             return;
         } else {
 
-           const result = await authenticateUser({ email: inputEmailRef.current!.value, password: inputPasswordRef.current!.value })
-           console.log(result);
-            //  dispatch(authActions.login());
+            const result = await authenticateUser({ email: inputEmailRef.current!.value, password: inputPasswordRef.current!.value })
+            console.log(result);
+            dispatch(authActions.login());
+           // dispatch(authActions.navigateTo());
             // navigate(ROUTE.DASHBOARD);
             // make API call to fetch & validate login detail
 

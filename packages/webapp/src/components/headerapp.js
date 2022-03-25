@@ -28,12 +28,12 @@ const HeaderApp = (props) => {
         props.onProfileMenuClickHandler(selectedMenuItem);
       }
     },
-    props.isAuthenticated
+      props.isAuthenticated
     )
     const unlisten = navigator.listen(onParentNavigate);
 
     return unlisten; // <-- cleanup listener on component unmount
-  }, []);
+  }, [props.isAuthenticated]);
 
   return <div ref={ref}></div>
 }

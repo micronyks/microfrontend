@@ -7,11 +7,17 @@ import authStore from './core/store/auth.store';
 // custom imports
 import App from './App';
 
-const mount = (el, { onNavigate, defaultHistory, initialPath, onAuthChange }, selectedMenuItem) => {
+const mount = (el, { onNavigate, defaultHistory, initialPath, onAuthChange, sendNavigationTo }, selectedMenuItem) => {
 
   const history = defaultHistory || createMemoryHistory({
     initialEntries: [initialPath]
   });
+
+  const navigateTo = (routeTo) => {
+    if (sendNavigationTo) {
+      sendNavigationTo(routeTo);
+    }
+  }
 
   const isLoggedIn = (isAuthenticated) => {
     if (onAuthChange) {
@@ -25,7 +31,10 @@ const mount = (el, { onNavigate, defaultHistory, initialPath, onAuthChange }, se
 
   ReactDOM.render(
     <Provider store={authStore}>
-      <App history={history} isLoggedIn={isLoggedIn} selectedMenuItem={selectedMenuItem}/>
+      <App history={history}
+        navigateTo={navigateTo}
+        isLoggedIn={isLoggedIn}
+        selectedMenuItem={selectedMenuItem} />
     </Provider>,
     el);
 

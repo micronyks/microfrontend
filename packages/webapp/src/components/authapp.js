@@ -1,6 +1,6 @@
 import mount from 'auth/AuthApp';
 import React, { useRef, useEffect, useContext } from 'react';
-import { UNSAFE_NavigationContext, useLocation } from 'react-router-dom';
+import { UNSAFE_NavigationContext, useLocation, useNavigate } from 'react-router-dom';
 
 
 const AuthApp = (props) => {
@@ -9,6 +9,7 @@ const AuthApp = (props) => {
   const ref = useRef(null);
   const { navigator } = useContext(UNSAFE_NavigationContext); // the browser history object  
   const location = useLocation();
+  const navigation = useNavigate();
 
   useEffect(() => {
     const { onParentNavigate } = mount(ref.current, {
@@ -21,9 +22,15 @@ const AuthApp = (props) => {
       },
       onAuthChange: (isAuthenticated) => {
         props.onAuthChange(isAuthenticated);
-      }
+      },
+      sendNavigationTo: (navigateTo) => {
+        const pathname = location.pathname;
+        if (pathname !== navigateTo) {
+          navigation(navigateTo);
+        }
+      },
     },
-    props.selectedMenuItem
+      props.selectedMenuItem
     )
     const unlisten = navigator.listen(onParentNavigate);
 

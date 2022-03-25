@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useLayoutEffect, useState } from 'react';
-import { Routes, Route, Navigate, Router } from 'react-router-dom';
+import { Routes, Route, Navigate, Router, useNavigate } from 'react-router-dom';
 import './App.css';
 import { Provider, useDispatch, useSelector } from 'react-redux';
 import authStore, { authActions, AuthState } from './core/store/auth.store';
@@ -9,12 +9,27 @@ import authStore, { authActions, AuthState } from './core/store/auth.store';
 import LoginComponent from './components/login.component';
 import ForgetPasswordComponent from './components/forget-password.component';
 import { HEADER } from './core/constants/header.constant';
+import { ROUTE } from './core/constants/route.constant';
 
-const App: React.FC<{ history: any, isLoggedIn: (isAuthenticated: boolean) => void, selectedMenuItem: string }> = (props) => {
+const App: React.FC<{ history: any, navigateTo: (navigateTo: string) => void, isLoggedIn: (isAuthenticated: boolean) => void, selectedMenuItem: string }> = (props) => {
 
+  let localStorageData: any = null;
   const dispatch = useDispatch();
   const isAuthenticated = useSelector((state: AuthState) => state?.auth?.isAuthenticated);
+  const navigatingTo = useSelector((state: AuthState) => state.auth.navigatingTo);
   const [selectedMenuItem, setSelectedMenuItem] = useState(props.selectedMenuItem);
+
+  // check if user is alredy logged in
+  if (localStorage.getItem('wideui_auth')) {
+    localStorageData = JSON.parse(localStorage?.getItem('wideui_auth') || '');
+
+    if (localStorageData?.isAuthenticated) {
+      props.navigateTo(navigatingTo);
+    }
+
+  }
+
+
 
   useEffect(() => {
     // logout when already logged in and logout button is clicked

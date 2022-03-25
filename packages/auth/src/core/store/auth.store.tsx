@@ -1,10 +1,12 @@
 import { createSlice, configureStore } from '@reduxjs/toolkit';
+import { ROUTE } from '../constants/route.constant';
 
 export interface IAuthState {
   isAuthenticated: boolean;
+  navigatingTo: string;
 }
 
-const AUTH_INITIAL_STATE: IAuthState = { isAuthenticated: false };
+const AUTH_INITIAL_STATE: IAuthState = { isAuthenticated: false, navigatingTo: '' };
 
 const authSlice = createSlice({
   name: 'auth',
@@ -14,12 +16,16 @@ const authSlice = createSlice({
       state.isAuthenticated = true;
       const auth = { isAuthenticated: true };
       localStorage.setItem('wideui_auth', JSON.stringify(auth));
+      state.navigatingTo = ROUTE.DASHBOARD;
     },
     logout(state) {
       state.isAuthenticated = false;
       const auth = { isAuthenticated: false };
       localStorage.setItem('wideui_auth', JSON.stringify(auth));
     },
+    navigateTo(state) {
+     // state.navigatingTo = ROUTE.DASHBOARD;
+    }
   },
 });
 

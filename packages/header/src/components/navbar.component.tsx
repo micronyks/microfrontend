@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -18,7 +18,7 @@ import { SETTINGS } from '../core/constants/settings.constant';
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = [SETTINGS.LOGOUT];
 
-function NavbarComponent(props: any) {
+const NavbarComponent: React.FC<{ navigateTo: (routeTo: string) => void, profileMenuClickHandler: (menuItem: string) => void, isAuthenticated: boolean }> = (props: any) => {
   // const navigate = useNavigate();
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
@@ -38,9 +38,8 @@ function NavbarComponent(props: any) {
   };
 
   const handleCloseUserMenu = (item: any) => {
-    console.log('close user menu', item, props.name);
     setAnchorElUser(null);
-    props.prfileMenuClickHandler(item);
+    props.profileMenuClickHandler(item);
   };
 
 
@@ -60,10 +59,10 @@ function NavbarComponent(props: any) {
             onClick={handleLogoClick}
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
-            {props.name}
+            WiDEUI
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          {props.isAuthenticated && <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -98,16 +97,20 @@ function NavbarComponent(props: any) {
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
+          </Box>}
+
+
           <Typography
             variant="h6"
             noWrap
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
           >
-            {props.name}
+            WiDEUI
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+
+
+          {props.isAuthenticated && <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
                 key={page}
@@ -117,9 +120,9 @@ function NavbarComponent(props: any) {
                 {page}
               </Button>
             ))}
-          </Box>
+          </Box>}
 
-          <Box sx={{ flexGrow: 0 }}>
+          {props.isAuthenticated && <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="" />
@@ -147,7 +150,7 @@ function NavbarComponent(props: any) {
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
+          </Box>}
         </Toolbar>
       </Container>
     </AppBar>

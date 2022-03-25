@@ -7,7 +7,7 @@ import './App.css';
 import HeaderComponent from './components/header.component';
 
 
-const App: React.FC<{ history: any, navigateTo: (routeTo: string) => void, profileMenuClickHandler:(menuItem:string)=>void, isAuthenticated:boolean }> = (props) => {
+const App: React.FC<{ history: any, navigateTo: (routeTo: string) => void, profileMenuClickHandler: (menuItem: string) => void, isAuthenticated: boolean }> = (props) => {
 
   console.log('header_App_component', props);
 
@@ -18,7 +18,10 @@ const App: React.FC<{ history: any, navigateTo: (routeTo: string) => void, profi
 
   useLayoutEffect(() => props?.history.listen(setState), [props?.history])
 
-  return <HeaderComponent navigateTo={props.navigateTo} profileMenuClickHandler={props.profileMenuClickHandler}/>
+  return <HeaderComponent
+    navigateTo={props.navigateTo}
+    profileMenuClickHandler={props.profileMenuClickHandler}
+    isAuthenticated={props.isAuthenticated} />
 }
 
 export default App;

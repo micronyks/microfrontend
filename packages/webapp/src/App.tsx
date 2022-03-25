@@ -7,6 +7,7 @@ import ErrorBoundary from "./components/error-boundary.component";
 // const HeaderApp = React.lazy(() => import("./components/headerapp"));
 import HeaderApp from "./components/headerapp";
 const AuthApp = React.lazy(() => import("./components/authapp"));
+// import AuthApp from "./components/authapp";
 const DashboardApp = React.lazy(() => import("./components/dashboardapp"));
 
 // import NotificationModule from "common/NotificationModule";
@@ -32,10 +33,12 @@ const App: React.FC = () => {
       setIsAuthenticated(true);
     } else {
       setIsAuthenticated(false);
+      setSelectedMenuItem('');
+      console.log('setSelectedMenuItem', selectedMenuItem);
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, selectedMenuItem]);
 
-  const onProfileMenuClickHandler = (value: string) => {
+  const onProfileMenuClickHandler = async (value: string) => {
     if (value === 'logout') {
       const auth = { isAuthenticated: false };
       localStorage.setItem('wideui_auth', JSON.stringify(auth));
@@ -48,11 +51,10 @@ const App: React.FC = () => {
 
     <header className="webapp-header">
       <ErrorBoundary>
-        {isAuthenticated && <HeaderApp
+        <HeaderApp
           onProfileMenuClickHandler={onProfileMenuClickHandler}
           isAuthenticated={isAuthenticated}
         />
-        }
       </ErrorBoundary>
     </header>
 
