@@ -33,10 +33,8 @@ const App: React.FC = () => {
       setIsAuthenticated(true);
     } else {
       setIsAuthenticated(false);
-      setSelectedMenuItem('');
-      console.log('setSelectedMenuItem', selectedMenuItem);
     }
-  }, [isAuthenticated, selectedMenuItem]);
+  }, [isAuthenticated]);
 
   const onProfileMenuClickHandler = async (value: string) => {
     if (value === 'logout') {
@@ -57,7 +55,6 @@ const App: React.FC = () => {
         />
       </ErrorBoundary>
     </header>
-
 
     {/* <NotificationModule notification={notification} /> */}
 

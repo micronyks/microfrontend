@@ -8,7 +8,7 @@ import Button from '@mui/material/Button/Button';
 import { useDispatch } from 'react-redux';
 import { authActions } from '../core/store/auth.store';
 import { useRef, useState } from 'react';
-import { TextField, Typography } from '@mui/material';
+import { IconButton, InputAdornment, TextField, Typography } from '@mui/material';
 import { authenticateUser } from '../core/apis/authentication';
 
 const isEmpty = (value: string) => value.trim() === '';
@@ -17,11 +17,6 @@ const LoginComponent = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const loginHandler = () => {
-        dispatch(authActions.login());
-        navigate(ROUTE.DASHBOARD);
-    }
-
     const forgetPasswordHandler = () => {
         navigate(ROUTE.AUTH.FORGET_PASSWORD);
     }
@@ -29,73 +24,83 @@ const LoginComponent = () => {
     const inputEmailRef = useRef<HTMLInputElement>(null);
     const inputPasswordRef = useRef<HTMLInputElement>(null);
 
-    // const [isEmailValid, setIsEmailValid] = useState(false);
-    // const [isPasswordValid, setIsPasswordValid] = useState(false);
+    const [enteredEmail, setEnteredEmail] = useState('');
+    const [enteredEmailTouched, setEnteredEmailTouched] = useState(false);
 
-    const [formValidity, SetFormValidity] = useState({
-        email: true,
-        password: true,
-    });
+    const [enteredPassword, setEnteredPassword] = useState('');
+    const [enteredPasswordTouched, setEnteredPasswordTouched] = useState(false);
 
-    // const checkEmailValidity = (event: any) => {
-    //     setIsEmailValid(!isEmpty(inputEmailRef.current!.value));
-    // }
+    const enteredEmailValid = !isEmpty(enteredEmail.trim());
+    const enteredPasswordValid = !isEmpty(enteredPassword.trim());
+
+
+    const emailInputIsInvalid = !enteredEmailValid && enteredEmailTouched;
+    const passwordInputIsInvalid = !enteredPasswordValid && enteredPasswordTouched;
+
+    const emailBlurHandler = (e: any) => {
+        setEnteredEmailTouched(true);
+    }
+
+    const emailChangeHandler = (e: any) => {
+        setEnteredEmail(e.target.value);
+    }
+
+    const passwordBlurHandler = (e: any) => {
+        setEnteredPasswordTouched(true);
+    }
+
+    const passwordChangeHandler = (e: any) => {
+        setEnteredPassword(e.target.value);
+    }
 
     const confirmHandler = async (event: any) => {
         event.preventDefault();
+        setEnteredEmailTouched(true);
+        setEnteredPasswordTouched(true);
 
-        const enteredEmailIsValid = !isEmpty(inputEmailRef.current!.value);
-        const enteredPasswordIsValid =
-            !isEmpty(inputPasswordRef.current!.value);
-
-        SetFormValidity({
-            email: enteredEmailIsValid,
-            password: enteredPasswordIsValid,
-        });
-
-        const formIsValid = enteredEmailIsValid && enteredPasswordIsValid;
-
-        if (!formIsValid) {
+        if (!enteredEmailValid && !enteredPasswordValid) {
             return;
         } else {
 
-            const result = await authenticateUser({ email: inputEmailRef.current!.value, password: inputPasswordRef.current!.value })
-            console.log(result);
-            dispatch(authActions.login());
-           // dispatch(authActions.navigateTo());
-            // navigate(ROUTE.DASHBOARD);
-            // make API call to fetch & validate login detail
+            const result = await authenticateUser({ email: enteredEmail, password: enteredPassword })
 
+            setEnteredEmail('');
+            setEnteredEmailTouched(false);
+            setEnteredPasswordTouched(false);
+            dispatch(authActions.login());
         }
     };
 
 
     return <div className="login-app-container">
-
-        <form onSubmit={confirmHandler}>
+        <form onSubmit={confirmHandler} className="form" noValidate autoComplete="off">
             <div>
                 <TextField type="text"
+                    name='email'
                     id="email"
                     label="Email"
                     variant="outlined"
                     inputRef={inputEmailRef}
                     margin="normal"
-                    error={!formValidity.email}
-                    helperText={!formValidity.email ? "Pleae enter valid email" : ''}
-                //  onChange={checkEmailValidity} 
+                    error={emailInputIsInvalid}
+                    helperText={emailInputIsInvalid ? "Pleae enter valid email" : ''}
+                    onChange={emailChangeHandler}
+                    onBlur={emailBlurHandler}
                 />
             </div>
 
             <div>
-                <TextField type="text"
+                <TextField type="password"
+                    name="password"
                     id="password"
                     label="password"
                     variant="outlined"
                     inputRef={inputPasswordRef}
                     margin="normal"
-                    error={!formValidity.password}
-                    helperText={!formValidity.password ? "Pleae enter password" : ''}
-                //  onChange={checkEmailValidity} 
+                    error={passwordInputIsInvalid}
+                    helperText={passwordInputIsInvalid ? "Pleae enter password" : ''}
+                    onChange={passwordChangeHandler}
+                    onBlur={passwordBlurHandler}
                 />
             </div>
 
@@ -108,7 +113,9 @@ const LoginComponent = () => {
                 >
                     Login
                 </Button>
+
             </Typography>
+
         </form>
     </div>
 }
