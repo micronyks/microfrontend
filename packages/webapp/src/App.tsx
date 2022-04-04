@@ -6,8 +6,10 @@ import ErrorBoundary from "./components/error-boundary.component";
 
 // const HeaderApp = React.lazy(() => import("./components/headerapp"));
 import HeaderApp from "./components/headerapp";
+import { HEADER } from "./core/constants/header.constant";
+import { NAVIGATION } from "./core/constants/navigation.constant";
+import { WIDEUI_AUTH_STORAGE } from "./core/constants/storage.constant";
 const AuthApp = React.lazy(() => import("./components/authapp"));
-// import AuthApp from "./components/authapp";
 const DashboardApp = React.lazy(() => import("./components/dashboardapp"));
 
 // import NotificationModule from "common/NotificationModule";
@@ -37,10 +39,10 @@ const App: React.FC = () => {
   }, [isAuthenticated]);
 
   const onProfileMenuClickHandler = async (value: string) => {
-    if (value === 'logout') {
+    if (value === HEADER.PROFILE.LOGOUT) {
       const auth = { isAuthenticated: false };
-      localStorage.setItem('wideui_auth', JSON.stringify(auth));
-      navigate('/auth/login');
+      localStorage.setItem(WIDEUI_AUTH_STORAGE, JSON.stringify(auth));
+      navigate(NAVIGATION.LOGOUT);
       setSelectedMenuItem(value);
     }
   }

@@ -1,0 +1,1 @@
+export const WIDEUI_AUTH_STORAGE = 'wideui_auth';

@@ -12,7 +12,7 @@ declare module "common/CommonBootstrap" {
     export default CommonBootstrap;
 }
 
-declare module "common/NotificationModule" {
-    const NotificationModule: React.ComponentType<{ notification: { title: string, description: string, color: string } }>;
-    export default NotificationModule;
+declare module "common/NotificatioComponent" {
+    const NotificatioComponent: React.ComponentType<{ notification: { title: string, description: string, color: string } }>;
+    export default NotificatioComponent;
 }
