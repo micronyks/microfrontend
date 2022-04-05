@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('webpack').container;
+const webpack = require("webpack"); // only add this if you don't have yet
+const { ModuleFederationPlugin } = webpack.container;
 const path = require('path');
 const deps = require('./package.json').dependencies;
 const buildDate = new Date().toLocaleString();
