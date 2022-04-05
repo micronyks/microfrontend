@@ -14,7 +14,6 @@ const notification = {
     time: 5000
 }
 
-
 const DashboardTileComponent: React.FC = () => {
     return (<div>
         <Card sx={{ minWidth: 275 }}>
