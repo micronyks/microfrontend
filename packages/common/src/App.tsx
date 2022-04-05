@@ -5,7 +5,7 @@ import './App.css';
 import SandBoxComponent from './components/sandbox.component';
 
 function App() {
-  return ( <div> <h1> Common App Starting </h1>
+  return ( <div> <h1> Common App </h1>
    <SandBoxComponent/>
   </div>);
 }

@@ -55,11 +55,6 @@ module.exports = (env, argv) => {
       new ModuleFederationPlugin({
         name: "webapp",
         remotes: {
-          // auth: 'auth@http://localhost:3001/remoteEntry.js',
-          // common: 'common@http://localhost:3002/remoteEntry.js',
-          // dashboard: 'dashboard@http://localhost:3003/remoteEntry.js',
-          // header: 'header@http://localhost:3004/remoteEntry.js',
-
           auth: `auth@${domain}/auth/latest/remoteEntry.js`,
           dashboard: `dashboard@${domain}/dashboard/latest/remoteEntry.js`,
           header: `header@${domain}/header/latest/remoteEntry.js`,
