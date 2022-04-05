@@ -1,5 +1,5 @@
 
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './login.component.css';
 
 // custom imports
@@ -10,8 +10,10 @@ import { authActions } from '../core/store/auth.store';
 import { useRef, useState } from 'react';
 import { IconButton, InputAdornment, TextField, Typography } from '@mui/material';
 import { authenticateUser } from '../core/apis/authentication';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
 
 const isEmpty = (value: string) => value.trim() === '';
+const isEmailValid = (value: string) => new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/g).test(value);
 
 const LoginComponent = () => {
     const dispatch = useDispatch();
@@ -30,9 +32,12 @@ const LoginComponent = () => {
     const [enteredPassword, setEnteredPassword] = useState('');
     const [enteredPasswordTouched, setEnteredPasswordTouched] = useState(false);
 
-    const enteredEmailValid = !isEmpty(enteredEmail.trim());
-    const enteredPasswordValid = !isEmpty(enteredPassword.trim());
+    const [showPassword, setShowPassword] = useState(false);
+    const showPasswordHandler = () => setShowPassword(!showPassword);
+    const passwordMouseDownHandler = () => setShowPassword(!showPassword);
 
+    const enteredEmailValid = !isEmpty(enteredEmail.trim()) && isEmailValid(enteredEmail.trim());
+    const enteredPasswordValid = !isEmpty(enteredPassword.trim());
 
     const emailInputIsInvalid = !enteredEmailValid && enteredEmailTouched;
     const passwordInputIsInvalid = !enteredPasswordValid && enteredPasswordTouched;
@@ -63,11 +68,14 @@ const LoginComponent = () => {
         } else {
 
             const result = await authenticateUser({ email: enteredEmail, password: enteredPassword })
-
-            setEnteredEmail('');
-            setEnteredEmailTouched(false);
-            setEnteredPasswordTouched(false);
-            dispatch(authActions.login());
+            if (result.status === 200) {
+                setEnteredEmail('');
+                setEnteredEmailTouched(false);
+                setEnteredPasswordTouched(false);
+                dispatch(authActions.login());
+            }else{
+                alert('Username or Password not matched !');
+            }
         }
     };
 
@@ -90,7 +98,8 @@ const LoginComponent = () => {
             </div>
 
             <div>
-                <TextField type="password"
+                <TextField
+                    type={showPassword ? "text" : "password"}
                     name="password"
                     id="password"
                     label="password"
@@ -101,9 +110,25 @@ const LoginComponent = () => {
                     helperText={passwordInputIsInvalid ? "Pleae enter password" : ''}
                     onChange={passwordChangeHandler}
                     onBlur={passwordBlurHandler}
+                    InputProps={{
+                        endAdornment: (
+                            <InputAdornment position="end">
+                                <IconButton
+                                    aria-label="toggle password visibility"
+                                    onClick={showPasswordHandler}
+                                    onMouseDown={passwordMouseDownHandler}
+                                >
+                                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                                </IconButton>
+                            </InputAdornment>
+                        )
+                    }}
                 />
             </div>
 
+            <div className="lgn-forgot-password">
+                <div><Link to="/auth/forgetpassword">Forgot Password</Link></div>
+            </div>
 
             <Typography align='center'>
                 <Button

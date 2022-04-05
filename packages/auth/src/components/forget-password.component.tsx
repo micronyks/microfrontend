@@ -1,14 +1,8 @@
-
-import {useNavigate} from 'react-router-dom';
-
 // custom imports
-const ForgetPasswordComponent=()=>{
+const ForgetPasswordComponent = () => {
 
-    const navigate=useNavigate();
-
-    
     return <div className="login-app-container">
-        <div className="login-app">Forget Password Page</div>
+        <h1 className="login-app">The Page is under construction</h1>
     </div>
 }
 

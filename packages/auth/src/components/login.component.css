@@ -11,3 +11,9 @@
     width: 500px;
     height:300px;
 }
+
+.lgn-forgot-password{
+    display: flex;
+    justify-content: end;
+    margin-bottom: 30px;
+}

@@ -5,8 +5,8 @@ const cors = require('cors');
 const app = express();
 
 const myuser = [
-    { id: 1, email: 'a', password: 'a' },
-    { id: 1, email: 'b', password: 'b' }
+    { id: 1, email: 'a@b.com', password: 'a' },
+    { id: 1, email: 'b@c.com', password: 'b' }
 ]
 
 app.use(cors());

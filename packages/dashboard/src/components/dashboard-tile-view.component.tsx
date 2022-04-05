@@ -1,11 +1,18 @@
 import { Link } from "react-router-dom";
-import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { REPLCommand } from "repl";
+
+import NotificationComponent from "common/NotificationComponent";
+
+const notification = {
+    title: 'I am notification component',
+    description: 'My First ever notification !',
+    color: 'red',
+    time: 5000
+}
 
 
 const DashboardTileComponent: React.FC = () => {
@@ -19,10 +26,10 @@ const DashboardTileComponent: React.FC = () => {
                     Dashboard
                 </Typography>
                 <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                   Wide Ui Project
+                    Wide Ui Project
                 </Typography>
                 <Typography variant="body2">
-                   This is our Dashboard view of WiDE UI
+                    This is our Dashboard view of WiDE UI
                 </Typography>
             </CardContent>
             <CardActions>
@@ -30,6 +37,8 @@ const DashboardTileComponent: React.FC = () => {
                 <Button size="small"><Link to='/dashboard/mapview'> MapView</Link></Button>
             </CardActions>
         </Card>
+
+        <NotificationComponent notification={notification} />
     </div>)
 }
 

@@ -50,12 +50,12 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'dashboard',
       filename: 'remoteEntry.js',
+      remotes: {
+        common: 'common@http://localhost:3002/remoteEntry.js',
+      },
       exposes: {
         // expose each component
         './DashboardApp': './src/bootstrap',
-        // './DashboardTileView': './src/components/dashboard-tile-view.component',
-        // './DashboardSpeedoMeterView': './src/components/dashboard-speedometer-view.component',
-        // './DashboardMapView': './src/components/dashboard-map-view.component',
       },
       shared: {
         ...deps,

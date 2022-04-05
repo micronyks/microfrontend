@@ -45,6 +45,9 @@ module.exports = {
         new ModuleFederationPlugin({
             name: 'dashboard',
             filename: 'remoteEntry.js',
+            remotes: {
+                common: `common@${domain}/common/latest/remoteEntry.js`
+              },
             exposes: {
                 // expose each component
                 './DashboardApp': './src/bootstrap',

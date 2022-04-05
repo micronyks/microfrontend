@@ -11,9 +11,10 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
-import LogoutComponent from './logout.component';
 import { SETTINGS } from '../core/constants/settings.constant';
+import { ROUTE } from '../core/constants/route.constant';
+
+import './navbar.component.css';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = [SETTINGS.LOGOUT];
@@ -43,9 +44,12 @@ const NavbarComponent: React.FC<{ navigateTo: (routeTo: string) => void, profile
   };
 
 
-  const handleLogoClick = () => {
-    console.log('logo clicked');
-    props.navigateTo('/dashboard/tileview');
+  const logoClickHandler = () => {
+    if (props.isAuthenticated) {
+      props.navigateTo(ROUTE.HEADER.DASHBOARD);
+    } else {
+      props.navigateTo(ROUTE.HEADER.LOGIN);
+    }
   };
 
   return (
@@ -56,7 +60,8 @@ const NavbarComponent: React.FC<{ navigateTo: (routeTo: string) => void, profile
             variant="h6"
             noWrap
             component="div"
-            onClick={handleLogoClick}
+            onClick={logoClickHandler}
+            className="logo_branding"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
             WiDEUI
@@ -104,6 +109,8 @@ const NavbarComponent: React.FC<{ navigateTo: (routeTo: string) => void, profile
             variant="h6"
             noWrap
             component="div"
+            className="logo_branding"
+            onClick={logoClickHandler}
             sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
           >
             WiDEUI

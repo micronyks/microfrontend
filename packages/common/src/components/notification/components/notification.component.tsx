@@ -1,3 +1,4 @@
+import { Card, CardContent, Typography } from "@mui/material";
 import React, { Fragment, useEffect, useState } from "react";
 
 // custom imports
@@ -15,8 +16,16 @@ const NotificationComponent: React.FC<{ notification: INotification }> = (props)
     }
 
     const element = (show && <div>
-        <h1> {props.notification.title} </h1>
-        <h3> {props.notification.description}</h3>
+        <Card sx={{ minWidth: 275 }}>
+            <CardContent>
+                <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                    {props.notification.title}
+                </Typography>
+                <Typography variant="body2">
+                    {props.notification.description}
+                </Typography>
+            </CardContent>
+        </Card>
     </div>);
 
     return <Fragment>{element}</Fragment>
