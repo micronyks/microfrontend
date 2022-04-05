@@ -52,7 +52,6 @@ module.exports = {
       filename: 'remoteEntry.js',
       exposes: {
         // expose each component
-        // './CommonModule': './src/components/common.component',
         './CommonBootstrap':'./src/bootstrap',
         './NotificationComponent': './src/components/notification/components/notification.component',
       },
