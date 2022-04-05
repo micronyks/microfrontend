@@ -66,7 +66,6 @@ const LoginComponent = () => {
         if (!enteredEmailValid && !enteredPasswordValid) {
             return;
         } else {
-
             const result = await authenticateUser({ email: enteredEmail, password: enteredPassword })
             if (result.status === 200) {
                 setEnteredEmail('');
