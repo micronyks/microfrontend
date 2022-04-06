@@ -11,11 +11,11 @@ const commonMount = (el: HTMLElement) => {
   );
 }
 
-if (process.env.NODE_ENV === 'development') {
-  const el = document.getElementById('root')
+// if (process.env.NODE_ENV === 'development') {
+  const el = document.getElementById('common_root')
   if (el) {
     commonMount(el);
   }
-}
+// }
 
 export default commonMount;

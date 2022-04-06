@@ -9,7 +9,7 @@ import NotificationComponent from "common/NotificationComponent";
 
 const notification = {
     title: 'I am notification component',
-    description: 'My First ever notification !',
+    description: 'My First ever notificationnnnn !',
     color: 'red',
     time: 5000
 }

@@ -31,7 +31,7 @@
   },
   "scripts": {
     "start": "webpack serve --history-api-fallback",
-    "build": "webpack --config webpack.prod.js",
+    "build": "webpack --mode production",
     "serve": "serve dist -p 3002",
     "clean": "rm -rf dist",
     "test": "react-scripts test",
