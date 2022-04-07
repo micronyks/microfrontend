@@ -6,6 +6,8 @@ import ErrorBoundary from "./components/error-boundary.component";
 
 // const HeaderApp = React.lazy(() => import("./components/headerapp"));
 import HeaderApp from "./components/headerapp";
+import Loader from "./components/loader";
+import SelectionComponent from "./components/selection.component";
 import { HEADER } from "./core/constants/header.constant";
 import { NAVIGATION } from "./core/constants/navigation.constant";
 import { WIDEUI_AUTH_STORAGE } from "./core/constants/storage.constant";
@@ -26,11 +28,14 @@ const App: React.FC = () => {
   const [selectedMenuItem, setSelectedMenuItem] = useState('');
   const navigate = useNavigate();
 
-  if (localStorage.getItem('wideui_auth')) {
-    localStorageData = JSON.parse(localStorage?.getItem('wideui_auth') || '');
-  }
-
   useEffect(() => {
+
+    if (localStorage.getItem('storage_auth')) {
+      localStorageData = JSON.parse(localStorage?.getItem('storage_auth') || '');
+    } else {
+      navigate(NAVIGATION.LOGIN);
+    }
+
     if (isAuthenticated || localStorageData?.isAuthenticated) {
       setIsAuthenticated(true);
     } else {
@@ -60,7 +65,7 @@ const App: React.FC = () => {
 
     {/* <NotificationModule notification={notification} /> */}
 
-    <Suspense fallback="Loading...">
+    <Suspense fallback={<Loader />}>
       <section className='webapp-viewport'>
         <ErrorBoundary>
           <Routes>
@@ -75,7 +80,9 @@ const App: React.FC = () => {
 
             <Route path='/dashboard/*' element={<DashboardApp />} />
 
-            <Route path='/' element={<Navigate to='/auth' />} />
+            <Route path='/selection' element={<SelectionComponent />} />
+
+            <Route path='/' element={<Navigate to='/auth/login' />} />
           </Routes>
         </ErrorBoundary>
       </section>

@@ -5,4 +5,5 @@ export const ROUTE = {
         FORGET_PASSWORD: '/auth/forgetpassword'
     },
     DASHBOARD: '/dashboard',
+    SELECTION:'/selection'
 }

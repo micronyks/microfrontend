@@ -35,7 +35,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "backup": "node ./scripts/backup.js",
-    "wideui": "concurrently --kill-others \"cd ../auth/ && npm run start\" \"cd ../common/ && npm run start\" \"cd ../dashboard/ && npm run start\" \"cd ../header/ && npm run start\" \"cd ../server/ && npm run start\" \"npm run start\""
+    "wideui": "concurrently --kill-others \"cd ../auth/ && npm run start\" \"cd ../common/ && npm run start\" \"cd ../dashboard/ && npm run start\" \"cd ../header/ && npm run start\" \"npm run start\""
   },
   "eslintConfig": {
     "extends": [

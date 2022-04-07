@@ -12,19 +12,22 @@ const authSlice = createSlice({
   name: 'auth',
   initialState: AUTH_INITIAL_STATE,
   reducers: {
-    login(state) {
+    login(state, user) {
       state.isAuthenticated = true;
-      const auth = { isAuthenticated: true };
-      localStorage.setItem('wideui_auth', JSON.stringify(auth));
-      state.navigatingTo = ROUTE.DASHBOARD;
+      const auth = { isAuthenticated: true, user: user.payload };
+      localStorage.setItem('storage_auth', JSON.stringify(auth));
+
+      // navigate after login
+      state.navigatingTo = ROUTE.SELECTION;
     },
     logout(state) {
       state.isAuthenticated = false;
-      const auth = { isAuthenticated: false };
-      localStorage.setItem('wideui_auth', JSON.stringify(auth));
+      const auth = { isAuthenticated: false, user: null };
+      localStorage.setItem('storage_auth', JSON.stringify(auth));
+      localStorage.removeItem("storage_auth");
     },
-    navigateTo(state) {
-     // state.navigatingTo = ROUTE.DASHBOARD;
+    navigateTo(state, navigatingTo) {
+       state.navigatingTo = navigatingTo.payload;
     }
   },
 });

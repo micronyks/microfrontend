@@ -8,7 +8,7 @@ import Button from '@mui/material/Button/Button';
 import { useDispatch } from 'react-redux';
 import { authActions } from '../core/store/auth.store';
 import { useRef, useState } from 'react';
-import { IconButton, InputAdornment, TextField, Typography } from '@mui/material';
+import { IconButton, InputAdornment, Snackbar, TextField, Typography } from '@mui/material';
 import { authenticateUser } from '../core/apis/authentication';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 
@@ -66,13 +66,14 @@ const LoginComponent = () => {
         if (!enteredEmailValid && !enteredPasswordValid) {
             return;
         } else {
-            const result = await authenticateUser({ email: enteredEmail, password: enteredPassword })
-            if (result.status === 200) {
+            const response = await authenticateUser({ email: enteredEmail, password: enteredPassword });
+            if (response.status === 200) {
+                const result = await response.json();
                 setEnteredEmail('');
                 setEnteredEmailTouched(false);
                 setEnteredPasswordTouched(false);
-                dispatch(authActions.login());
-            }else{
+                dispatch(authActions.login(result));
+            } else {
                 alert('Username or Password not matched !');
             }
         }

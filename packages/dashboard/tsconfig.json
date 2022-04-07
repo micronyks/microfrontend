@@ -23,5 +23,5 @@
   },
   "include": [
     "src"
-  ]
+, "../webapp/src/core/apis/selection.ts"  ]
 }

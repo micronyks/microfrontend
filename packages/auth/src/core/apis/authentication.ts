@@ -6,6 +6,4 @@ export const authenticateUser = async (credential: any) => {
     };
 
     return await fetch('http://localhost:5000/authentication', requestOptions);
-
-
 } 

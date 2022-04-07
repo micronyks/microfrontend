@@ -1,3 +1,4 @@
 export const NAVIGATION = {
-    LOGOUT: '/auth/login'
+    LOGIN: '/auth/login',
+    LOGOUT: '/auth/login',
 }

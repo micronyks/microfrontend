@@ -20,16 +20,17 @@ const App: React.FC<{ history: any, navigateTo: (navigateTo: string) => void, is
   const [selectedMenuItem, setSelectedMenuItem] = useState(props.selectedMenuItem);
 
   // check if user is alredy logged in
-  if (localStorage.getItem('wideui_auth')) {
-    localStorageData = JSON.parse(localStorage?.getItem('wideui_auth') || '');
+  if (localStorage.getItem('storage_auth')) {
+    localStorageData = JSON.parse(localStorage?.getItem('storage_auth') || '');
 
     if (localStorageData?.isAuthenticated) {
+      if(navigatingTo === ''){ // remember me scenario
+          dispatch(authActions.navigateTo(ROUTE.SELECTION)); 
+      }
       props.navigateTo(navigatingTo);
     }
 
   }
-
-
 
   useEffect(() => {
     // logout when already logged in and logout button is clicked

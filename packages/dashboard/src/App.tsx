@@ -22,7 +22,7 @@ const App: React.FC<{ history: any }> = (props) => {
         <Route path='/dashboard/speedometerview' element={<DashboardSpeedoMeterViewComponent />} />
         <Route path='/dashboard/mapview' element={<DashboardMapViewComponent />} />
         <Route path='/dashboard/tileview' element={<DashboardTileComponent />} />
-        <Route path='/dashboard' element={<Navigate to='/dashboard/tileview' />} /> 
+        <Route path='/dashboard' element={<Navigate to='/dashboard/tileview' />} />
         <Route path='/' element={<Navigate to='/dashboard' />} />
       </Routes>
     </Router>
