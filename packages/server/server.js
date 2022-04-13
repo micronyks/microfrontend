@@ -1,18 +1,23 @@
-
-
 const express = require('express');
+const swaggerUI = require('swagger-ui-express');
+const YAML = require('yamljs');
+const swaggerJsDocs = YAML.load('./api.yaml');
 const cors = require('cors');
 const app = express();
-
 const users = require('./users');
-
-
+const vessels = require('./vessels');
 
 app.use(cors());
+
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerJsDocs));
+
 app.use(express.json());
 
-app.post('/authentication', (req, res) => {
-    console.log('authentication servic called', req.body);
+app.get('/login'), (req, res) => {
+    res.status(200).send(users);
+}
+
+app.post('/login', (req, res) => {
 
     if (req.body.email && req.body.password) {
 
@@ -37,6 +42,13 @@ app.post('/authentication', (req, res) => {
         }
     }
 })
+
+
+app.get('/vessel/:imo', (req, res) => {
+    console.log(req);
+    res.status(200).send(vessels);
+})
+
 
 app.listen(5000, () => { console.log('node-express server running on 5000') });
 

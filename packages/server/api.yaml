@@ -1,0 +1,160 @@
+openapi: 3.0.0
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: local or dev server
+    url: http://localhost:5000/
+info:
+  description: Wide ui 2 apis
+  version: "1.0.0"
+  title: WIDEUI 2 Project
+
+schemes: [http, https]
+
+paths:
+  /vessel/{imo}:
+    get:
+      tags:
+       - vessel
+      summary: Get a particular vessel detail
+      description: Get a Vessel information
+      operationId: getVessel
+      parameters:
+        - name: imo
+          in: path
+          description: ID of vessel to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: returned vessel information
+          content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Vessel'
+        '4xx':
+          description: bad request
+
+components:
+  schemas:
+    Users:
+      type: object
+      required:
+        - email
+        - userName
+      properties:
+        id:
+          type: string
+          format: uuid
+          
+        userName:
+          type: string
+          format: string
+         
+        email:
+          type: string
+          format: string
+    Authentication:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+    Vessel:
+      type: object
+      required:
+        - imo
+        - name
+      properties:
+        imo:
+          type: number
+        name:
+          type: string
+        owner: 
+          type: string
+        type:
+          type: string
+        flag:
+          type: string
+        enginetype: 
+          type: string
+        ecs:
+          type: string
+        enginenumber:
+          type: array
+          items:
+            type: array
+            items:
+              type: string
+    Engine:
+      type: object
+      required:
+        - enginenumber
+        - name
+      properties:
+        enginenumber:
+          type: number
+        name:
+          type: string
+        owner: 
+          type: string
+        type:
+          type: string
+        flag:
+          type: string
+        enginetype: 
+          type: string
+        ecs:
+          type: string
+    Signal:
+      type: object
+      required:
+       - imo
+       - enginenumber
+       - signalname
+      properties:
+        imo: 
+          type: string
+        enginenumber:
+          type: string
+        signalname:
+          type: string
+        description:
+          type: string
+        nameatsource: 
+          type: string
+        factor: 
+          type: string
+        offset: 
+          type: string
+        engunit: 
+          type: string
+        range_low:
+          type: string
+        range_high:
+          type: string
+        display_rangemin:
+          type: string
+        display_rangemax:
+          type: string
+        scanningms:
+          type: string
+        sourceaddress:
+          type: string
+        datatype:
+          type: string
+        readwrite:
+          type: string
+    Group:
+      type: object
+      required:
+        - groupid
+      properties:
+        vessels: 
+          type: array
+          items:
+            $ref: '#/components/schemas/Vessel'
