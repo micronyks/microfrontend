@@ -1,18 +1,16 @@
 name: deploy-docker-images
 
-on: [push]
-
-# on:
-#   push:
-#     branches:
-#       - main
-#       - master
-#     paths:
-#       - 'docker-compose.yml'
+on:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - 'packages/auth/**'
 
 defaults:
   run:
-    working-directory: docker-compose.yml
+    working-directory: packages/auth
 
 jobs:
   build:
