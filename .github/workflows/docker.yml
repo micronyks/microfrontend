@@ -10,9 +10,9 @@ on: [push]
 #     paths:
 #       - 'docker-compose.yml'
 
-# defaults:
-#   run:
-#     working-directory: docker-compose.yml
+defaults:
+  run:
+    working-directory: docker-compose.yml
 
 jobs:
   build:
