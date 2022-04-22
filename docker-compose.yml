@@ -3,10 +3,10 @@ services:
   authapp:
     # stdin_open: true
     # tty: true
-    build: 
+    build:
       context: ./packages/auth
       dockerfile: Dockerfile.prod
-    image: authapp
+    image: micronyks/authapp:1.0.0
     container_name: auth
     ports:
       - "3001:80"
@@ -14,12 +14,12 @@ services:
     #   - ./packages/auth:/app
     # environment:
     #   - CHOCKIDAR_USEPOLLING=true
-  
+
   commonapp:
-    build: 
+    build:
       context: ./packages/common
       dockerfile: Dockerfile.prod
-    image: commonapp
+    image: micronyks/commonapp:1.0.0
     container_name: common
     ports:
       - "3002:80"
@@ -28,7 +28,7 @@ services:
     build:
       context: ./packages/dashboard
       dockerfile: Dockerfile.prod
-    image: dashboardapp
+    image: micronyks/dashboardapp:1.0.0
     container_name: dashboard
     ports:
       - "3003:80"
@@ -39,16 +39,16 @@ services:
     build:
       context: ./packages/header
       dockerfile: Dockerfile.prod
-    image: headerapp
+    image: micronyks/headerapp:1.0.0
     container_name: header
     ports:
       - "3004:80"
 
   webapp:
-    build: 
+    build:
       context: ./packages/webapp
       dockerfile: Dockerfile.prod
-    image: webapp
+    image: micronyks/webapp:1.0.0
     container_name: webapp
     ports:
       - "3000:80"
@@ -63,7 +63,7 @@ services:
     build:
       context: ./packages/server
       dockerfile: Dockerfile.prod
-    image: serverapp
+    image: micronyks/serverapp:1.0.0
     container_name: server
     ports:
       - "5000:5000"
