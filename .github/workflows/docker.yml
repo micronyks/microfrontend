@@ -34,7 +34,7 @@ jobs:
 
         run: |
 
-          docker build -t ${{ secrets.DOCKER_USER }}/webapp:1.0.0  -f Dockerfile.prod ./packages/auth
+          docker build -t ${{ secrets.DOCKER_USER }}/authapp:1.0.0  -f Dockerfile.prod ./packages/auth
 
       
 
