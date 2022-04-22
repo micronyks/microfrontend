@@ -34,7 +34,7 @@ jobs:
 
         run: |
 
-          docker build ./packages/auth -f Dockerfile.prod -t micronyks/webapp:1.0.0
+          docker build ./packages/auth -t micronyks/webapp:1.0.0  -f Dockerfile.prod
 
       
 
