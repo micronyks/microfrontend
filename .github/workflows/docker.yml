@@ -37,7 +37,9 @@ jobs:
 
           docker build ./packages/auth -t ${{ secrets.DOCKER_USER }}/authapp:1.0.0  
 
-      
+      - name: docker push auth-app
+
+          docker push ${{ secrets.DOCKER_USER }}/authapp:1.0.0
 
       # - run: npm install
       # - run: npm run build
