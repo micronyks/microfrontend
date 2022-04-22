@@ -1,0 +1,63 @@
+version: '3.8'
+services:
+  authpp:
+    # stdin_open: true
+    # tty: true
+    build: 
+      context: ./packages/auth
+      dockerfile: Dockerfile
+    container_name: auth
+    ports:
+      - "3001:3001"
+    # volumes:
+    #   - ./packages/auth:/app
+    environment:
+      - CHOCKIDAR_USEPOLLING=true
+  
+  commonapp:
+    build: 
+      context: ./packages/common
+      dockerfile: Dockerfile
+    container_name: common
+    ports:
+      - "3002:3002"
+
+  dashboardapp:
+    build:
+      context: ./packages/dashboard
+      dockerfile: Dockerfile
+    container_name: dashboard
+    ports:
+      - "3003:3003"
+    depends_on:
+      - commonapp
+
+  headerapp:
+    build:
+      context: ./packages/header
+      dockerfile: Dockerfile
+    container_name: header
+    ports:
+      - "3004:3004"
+
+  webapp:
+    build: 
+      context: ./packages/webapp
+      dockerfile: Dockerfile
+    container_name: webapp
+    ports:
+      - "3000:3000"
+    depends_on:
+      - authapp
+      - commonapp
+      - dashboardapp
+      - headerapp
+      - serverapp
+
+  serverapp:
+    build:
+      context: ./packages/server
+      dockerfile: Dockerfile
+    container_name: server
+    ports:
+      - "5000:5000"

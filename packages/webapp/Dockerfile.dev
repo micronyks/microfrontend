@@ -1,0 +1,36 @@
+FROM node
+
+WORKDIR /app
+
+COPY package.json .
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["npm", "start"]
+
+
+
+# docker build -t webapp-image .  --no-cache
+
+# docker image ls
+
+# docker images -a
+
+# docker rmi <img-id>
+
+# docker run -d -p 3000:3000 --name webapp-image webappcontainer  webapp-image
+
+# docker run -v %cd%:/app -d -p 3000:3000 --name webapp-image webappcontainer  webapp-image
+
+# docker ps
+
+# docker exec examplecontainer bash
+
+
+
+
+

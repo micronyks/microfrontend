@@ -5,5 +5,5 @@ export const authenticateUser = async (credential: any) => {
         body: JSON.stringify({ email: credential.email, password: credential.password })
     };
 
-    return await fetch('http://localhost:5000/authentication', requestOptions);
+    return await fetch('http://localhost:5000/login', requestOptions);
 } 
