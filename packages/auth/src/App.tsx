@@ -33,6 +33,7 @@ const App: React.FC<{ history: any, navigateTo: (navigateTo: string) => void, is
   }
 
   useEffect(() => {
+    
     // logout when already logged in and logout button is clicked
     if (isAuthenticated && selectedMenuItem === HEADER.LOGOUT) {
       setSelectedMenuItem('');
