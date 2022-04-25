@@ -5,7 +5,8 @@ services:
     # tty: true
     build: 
       context: ./packages/auth
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
+    image: micronyks/authapp-dev:1.0.0
     container_name: auth
     ports:
       - "3001:3001"
@@ -17,7 +18,8 @@ services:
   commonapp:
     build: 
       context: ./packages/common
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
+    image: micronyks/commonapp-dev:1.0.0
     container_name: common
     ports:
       - "3002:3002"
@@ -25,7 +27,8 @@ services:
   dashboardapp:
     build:
       context: ./packages/dashboard
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
+    image: micronyks/dashboardapp-dev:1.0.0
     container_name: dashboard
     ports:
       - "3003:3003"
@@ -35,7 +38,8 @@ services:
   headerapp:
     build:
       context: ./packages/header
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
+    image: micronyks/headerapp-dev:1.0.0
     container_name: header
     ports:
       - "3004:3004"
@@ -43,7 +47,8 @@ services:
   webapp:
     build: 
       context: ./packages/webapp
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
+    image: micronyks/webapp-dev:1.0.0
     container_name: webapp
     ports:
       - "3000:3000"
@@ -57,7 +62,8 @@ services:
   serverapp:
     build:
       context: ./packages/server
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
+    image: micronyks/serverapp-dev:1.0.0
     container_name: server
     ports:
       - "5000:5000"

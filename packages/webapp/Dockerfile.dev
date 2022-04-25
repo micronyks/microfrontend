@@ -30,6 +30,10 @@ CMD ["npm", "start"]
 
 # docker exec examplecontainer bash
 
+# docker save -o mfe.tar micronyks/authapp-prod:1.0.0 micronyks/commonapp-prod:1.0.0 micronyks/dashboardapp-prod:1.0.0 micronyks/headerapp-prod:1.0.0 micronyks/webapp-prod:1.0.0 micronyks/serverapp-prod:1.0.0
+
+# docker load < mfe.tar
+
 
 
 
