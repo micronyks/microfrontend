@@ -40,7 +40,8 @@
     "docker:save-mfe": "docker save -o ../../../docker-images/mfe.tar micronyks/authapp-prod:1.0.0 micronyks/commonapp-prod:1.0.0 micronyks/dashboardapp-prod:1.0.0 micronyks/headerapp-prod:1.0.0 micronyks/webapp-prod:1.0.0 micronyks/serverapp-prod:1.0.0",
     "docker:load-mfe": "cd ../../../docker-images/ && docker load < mfe.tar",
     "docker:run-mfe": "cd ../../ && docker-compose -f docker-compose-run-mfe.yml up -d",
-    "docker": "node ./scripts/docker.js"
+    "docker": "node ./scripts/docker.js",
+    "temp": "node ./script/temp.js"
   },
   "eslintConfig": {
     "extends": [
