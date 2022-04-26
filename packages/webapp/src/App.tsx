@@ -17,7 +17,7 @@ const DashboardApp = React.lazy(() => import("./components/dashboardapp"));
 // import NotificationModule from "common/NotificationModule";
 
 const notification = {
-  title: 'first notification',
+  title: 'first notificationn',
   description: 'My First ever notification created !',
   color: 'red'
 }
