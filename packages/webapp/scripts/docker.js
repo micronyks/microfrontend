@@ -4,7 +4,9 @@ const path = require("path")
 const { execSync } = require('child_process');
 
 var source = '../../docker-compose-run-mfe.yml';
-var destination = `../../../docker-images/${formatDate(new Date())}_${formatTime(new Date())}`;
+// var destination = `../../../docker-images/${formatDate(new Date())}_${formatTime(new Date())}`;
+
+var destination = `../dist-docker-images/${formatDate(new Date())}_${formatTime(new Date())}`;
 
 const newYMLFilePath = destination + '/docker-compose-run-mfe.yml'
 
