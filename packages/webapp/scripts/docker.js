@@ -10,6 +10,8 @@ var destination = `./dist-docker-images/${formatDate(new Date())}_${formatTime(n
 
 const newYMLFilePath = destination + '/docker-compose-run-mfe.yml'
 
+const clearFolder = `./dist-docker-images/`
+
 function padTo2Digits(num) {
     return num.toString().padStart(2, '0');
 }
@@ -30,7 +32,28 @@ function formatTime(date) {
     ].join('.');
 }
 
-console.log(destination);
+function emptyDir(dirPath) {
+    const dirContents = fs.readdirSync(dirPath); // List dir content
+  
+    for (const fileOrDirPath of dirContents) {
+      try {
+        // Get Full path
+        const fullPath = path.join(dirPath, fileOrDirPath);
+        const stat = fs.statSync(fullPath);
+        if (stat.isDirectory()) {
+          // It's a sub directory
+          if (fs.readdirSync(fullPath).length) emptyDir(fullPath);
+          // If the dir is not empty then remove it's contents too(recursively)
+          fs.rmdirSync(fullPath);
+        } else fs.unlinkSync(fullPath); // It's a file
+      } catch (ex) {
+        console.error(ex.message);
+      }
+    }
+  }
+
+  emptyDir(clearFolder);
+
 
 console.log('....................................create docker images first....................................')
 execSync(`cd ../webapp/ && cd ../../ && docker-compose -f docker-compose-create-mfe.yml up -d `)
