@@ -20,13 +20,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
-      - name: docker build
-
-        run: npm run docker 
-
-      # - run: npm install
-      # - run: npm run build
+      - run: npm run docker
 
       - uses: shinyinc/action-aws-cli@v1.2
       - run: aws s3 sync dist-docker-images s3://${{ secrets.AWS_S3_BUCKET_NAME }}/docker-images
