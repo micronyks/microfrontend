@@ -48,12 +48,12 @@ const mount = (el, { onNavigate, defaultHistory, initialPath, onAuthChange, send
   }
 }
 
-// if (process.env.NODE_ENV === 'development') {
-const el = document.getElementById('auth_root')
-if (el) {
-  mount(el, { defaultHistory: createBrowserHistory() });
+if (process.env.NODE_ENV === 'development') {
+  const el = document.getElementById('auth_root')
+  if (el) {
+    mount(el, { defaultHistory: createBrowserHistory() });
+  }
 }
-// }
 
 export default mount;
 
