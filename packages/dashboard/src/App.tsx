@@ -2,7 +2,7 @@ import { useLayoutEffect, useState } from 'react';
 import { Routes, Route, Router, Navigate } from 'react-router-dom';
 import './App.css';
 
-// custom imports
+// custom importss
 import DashboardTileComponent from './components/dashboard-tile-view.component';
 import DashboardSpeedoMeterViewComponent from './components/dashboard-speedometer-view.component';
 import DashboardMapViewComponent from './components/dashboard-map-view.component';

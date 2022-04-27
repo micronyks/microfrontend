@@ -3,7 +3,7 @@ import { Route, Router, Routes } from 'react-router-dom';
 import './App.css';
 
 
-// custom imports
+// custom importss
 import HeaderComponent from './components/header.component';
 
 

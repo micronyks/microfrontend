@@ -1,7 +1,7 @@
 import './App.css';
 
 
-// custom imports
+// custom importss
 import SandBoxComponent from './components/sandbox.component';
 
 function App() {
