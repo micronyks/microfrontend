@@ -1,14 +1,14 @@
 name: deploy-auth
 
-on: [push]
+# on: [push]
 
-# on:
-#   push:
-#     branches:
-#       - main
-#       - master
-#     paths:
-#       - 'packages/auth/**'
+on:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - 'packages/auth/**'
 
 defaults:
   run:
