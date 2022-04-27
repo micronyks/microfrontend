@@ -32,23 +32,21 @@ function formatTime(date) {
 
 console.log(destination);
 
-// console.log('....................................create docker images first...')
-// execSync(`cd ../webapp/ && npm run docker:create-mfe `)
-// console.log(`.....................................docker images are created. Check with 'docker image ls' command`)
+console.log('....................................create docker images first....................................')
+execSync(`cd ../webapp/ && cd ../../ && docker-compose -f docker-compose-create-mfe.yml up -d `)
+console.log(`.....................................docker images are created. Check with 'docker image ls' command....................................`)
 
 
 async function copyDir(src, dest) {
     await fs.mkdir(dest, { recursive: false });
 
-
-
     fs.copyFile(src, newYMLFilePath, (err) => {
         if (err) throw err;
-        console.log('.....................................File copied');
+        console.log('.....................................File copied....................................');
 
-        // console.log('.....................................Creating .tar file')
-        // execSync(`docker save -o ${destination}/mfe.tar micronyks/authapp-prod:1.0.0 micronyks/commonapp-prod:1.0.0 micronyks/dashboardapp-prod:1.0.0 micronyks/headerapp-prod:1.0.0 micronyks/webapp-prod:1.0.0 micronyks/serverapp-prod:1.0.0`)
-        // console.log('.....................................tar file created !')
+        console.log('.....................................Creating .tar file....................................')
+        execSync(`docker save -o ${destination}/mfe.tar micronyks/authapp-prod:1.0.0 micronyks/commonapp-prod:1.0.0 micronyks/dashboardapp-prod:1.0.0 micronyks/headerapp-prod:1.0.0 micronyks/webapp-prod:1.0.0 micronyks/serverapp-prod:1.0.0`)
+        console.log('.....................................tar file created....................................')
 
     })
 
