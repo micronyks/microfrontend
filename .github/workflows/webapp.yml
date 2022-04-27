@@ -1,14 +1,13 @@
 name: deploy-webapp
 
-on: [push]
 
-# on:
-#   push:
-#     branches:
-#       - main
-#       - master
-#     paths:
-#       - 'packages/webapp/**'
+on:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - 'packages/webapp/**'
 
 defaults:
   run:
@@ -25,8 +24,6 @@ jobs:
       - run: npm run docker
         env:
           PRODUCTION_DOMAIN: ${{ secrets.PRODUCTION_DOMAIN }}
-
-
 
       - uses: shinyinc/action-aws-cli@v1.2
       - run: aws s3 sync dist s3://${{ secrets.AWS_S3_BUCKET_NAME }}/container/latest
