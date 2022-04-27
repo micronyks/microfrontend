@@ -19,7 +19,7 @@ const App: React.FC<{ history: any, navigateTo: (navigateTo: string) => void, is
   const navigatingTo = useSelector((state: AuthState) => state.auth.navigatingTo);
   const [selectedMenuItem, setSelectedMenuItem] = useState(props.selectedMenuItem);
 
-  // check if user is alredy logged in..
+  // check if user is alredy logged in...
   if (localStorage.getItem('storage_auth')) {
     localStorageData = JSON.parse(localStorage?.getItem('storage_auth') || '');
 

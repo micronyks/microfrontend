@@ -14,7 +14,7 @@ import { WIDEUI_AUTH_STORAGE } from "./core/constants/storage.constant";
 const AuthApp = React.lazy(() => import("./components/authapp"));
 const DashboardApp = React.lazy(() => import("./components/dashboardapp"));
 
-// import NotificationModule from "common/NotificationModule";
+// import NotificationModule from "common/NotificationModule ";
 
 const notification = {
   title: 'first notificationn',
