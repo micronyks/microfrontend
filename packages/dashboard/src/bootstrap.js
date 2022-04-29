@@ -25,12 +25,12 @@ export function mount(el, { onNavigate, defaultHistory, initialPath }) {
   }
 }
 
-if (process.env.NODE_ENV === 'development') {
+//if (process.env.NODE_ENV === 'development') {
   const el = document.getElementById('dashboard_root')
   if (el) {
     mount(el, { defaultHistory: createBrowserHistory() });
   }
-}
+//}
 
 export default mount;
 

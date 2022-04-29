@@ -45,12 +45,12 @@ export function mount(el, { onNavigate, defaultHistory, initialPath, sendNavigat
     }
   }
 }
-if (process.env.NODE_ENV === 'development') {
+//if (process.env.NODE_ENV === 'development') {
   const el = document.getElementById('header_root')
   if (el) {
     mount(el, { defaultHistory: createBrowserHistory() });
   }
-}
+//}
 
 export default mount;
 

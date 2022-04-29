@@ -30,6 +30,9 @@
   "scripts": {
     "start": "webpack serve --history-api-fallback",
     "build": "webpack --config webpack.prod.js --mode production",
+    "docker:build": "webpack --mode production",
+    "docker:dev:build": "webpack --config webpack.config.js --mode development",
+    "docker:prod:build": "webpack --config webpack.docker.js --mode production",
     "serve": "serve dist -p 3004",
     "clean": "rm -rf dist",
     "test": "react-scripts test",

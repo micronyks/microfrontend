@@ -1,8 +1,12 @@
-FROM node as dashboard-build
+FROM node:14-alpine as dashboard-build
 
 WORKDIR /app
 
 COPY package.json .
+
+COPY package-lock.json .
+
+#RUN npm config set proxy http://localhost:3003
 
 RUN npm install
 
@@ -10,7 +14,8 @@ COPY . .
 
 EXPOSE 3003
 
-RUN npm run build
+
+RUN npm run docker:prod:build
 
 
 

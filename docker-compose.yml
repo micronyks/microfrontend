@@ -1,8 +1,8 @@
 version: '3.8'
 services:
   authapp:
-    # stdin_open: true
-    # tty: true
+    stdin_open: true
+    tty: true
     build:
       context: ./packages/auth
       dockerfile: Dockerfile.prod

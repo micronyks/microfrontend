@@ -1,4 +1,10 @@
 node_modules
+/node_modules
+Dockerfile.**
+dist
+/dist
+dist-docker-images
+/dist-docker-images
 Dockerfile
 .git
 .dockerignore
