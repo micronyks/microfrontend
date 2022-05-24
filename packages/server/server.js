@@ -6,12 +6,32 @@ const cors = require('cors');
 const app = express();
 const users = require('./users');
 const vessels = require('./vessels');
+const fetchFile = require('./fetchFile');
+let l;
+try{
+    fetchFile.getFileFromS3().then(response=>{
+        l = response;
+
+        console.log('###', l);
+       // res.send(response);
+    }).catch((e)=>{
+      //  res.send(e.message);
+    })
+}catch(err){
+    res.send(err.message);
+}
 
 app.use(cors());
 
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerJsDocs));
 
 app.use(express.json());
+
+app.get('/',(req, res)=>{
+    console.log('getting object from s3')
+    
+
+})
 
 app.get('/login'), (req, res) => {
     res.status(200).send(users);

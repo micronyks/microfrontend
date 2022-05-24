@@ -9,3 +9,10 @@ Dockerfile
 .git
 .dockerignore
 .evn
+Dockerfile* 
+docker-compose*
+.git
+.gitignore
+README.node_modules
+LICENSE
+.vscode

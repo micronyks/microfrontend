@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY package.json .
 
-COPY package-lock.json .
+# COPY package-lock.json .
 
 #RUN npm config set proxy http://localhost:3003
 

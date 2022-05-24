@@ -13,7 +13,7 @@ COPY . .
 EXPOSE 3004
 
 
-RUN npm run docker:build
+RUN npm run docker:prod:build
 
 
 
