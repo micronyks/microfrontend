@@ -87,7 +87,7 @@ async function zipFile(){
     const outputDir = destination + '.zip'; // this is the path where zip will be created
     zip.addLocalFolder(destination);
     zip.writeZip(outputDir);
-    console.log('..................................... .zip file created !....................................');
+    console.log('..................................... .zip file created !......................................');
   }catch(e){
       console.log(`something went wrong while zipping the tar file ${e}`);
   }
