@@ -1,5 +1,7 @@
 var fs = require("fs-extra");
-const path = require("path")
+const path = require("path");
+
+const AdmZip = require('adm-zip');
 
 const { execSync } = require('child_process');
 
@@ -68,11 +70,27 @@ async function copyDir(src, dest) {
         console.log('.....................................File copied....................................');
 
         console.log('.....................................Creating .tar file....................................')
-        execSync(`docker save -o ${destination}/mfe.tar micronyks/authapp-prod:1.0.0 micronyks/commonapp-prod:1.0.0 micronyks/dashboardapp-prod:1.0.0 micronyks/headerapp-prod:1.0.0 micronyks/webapp-prod:1.0.0 micronyks/serverapp-prod:1.0.0`)
+        execSync(`docker save -o ${destination}/mfe.tar micronyks/serverapp-prod:1.0.0`)
         console.log('.....................................tar file created....................................')
+
+        console.log('.....................................Creating .zip file....................................');
+        zipFile();
 
     })
 
+}
+
+async function zipFile(){
+  try{
+
+    const zip  = new AdmZip();
+    const outputDir = destination + '.zip'; // this is the path where zip will be created
+    zip.addLocalFolder(destination);
+    zip.writeZip(outputDir);
+    console.log('..................................... .zip file created !....................................');
+  }catch(e){
+      console.log(`something went wrong while zipping the tar file ${e}`);
+  }
 }
 
 copyDir(source, destination);

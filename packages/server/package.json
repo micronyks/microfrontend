@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
-    "prod": "node server.js"
+    "prod": "node server.js",
+    "build": "webpack --config webpack.prod.js --mode production"
   },
   "keywords": [],
   "author": "",
@@ -18,5 +19,14 @@
     "nodemon": "^2.0.15",
     "swagger-ui-express": "^4.3.0",
     "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.0",
+    "@babel/preset-env": "^7.18.0",
+    "adm-zip": "^0.5.9",
+    "babel-loader": "^8.2.5",
+    "node-polyfill-webpack-plugin": "^1.1.4",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2"
   }
 }

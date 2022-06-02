@@ -10,17 +10,18 @@ AWS.config.update({
 const S3 = new AWS.S3();
 
 module.exports = {
-    getFileFromS3:()=>{
+    getFileFromS3:(filePath)=>{
         return new Promise((resolve, reject)=>{
             try{
                 const bucketName = 'micronyks-mfe';
-                const objectKey ='mock/i.json';
+                const objectKey =filePath;
                 S3.getObject({
                     Bucket: bucketName,
                     Key: objectKey
                 }, (err, data)=>{
                     if(err){
                         reject(err)
+        
                     }else{
                         
                         console.log('Unparsed fetched object data', JSON.parse(data.Body.toString('utf-8')));

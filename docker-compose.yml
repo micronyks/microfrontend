@@ -1,19 +1,19 @@
 version: '3.8'
 services:
-  # authapp:
-  #   stdin_open: true
-  #   tty: true
-  #   build:
-  #     context: ./packages/auth
-  #     dockerfile: Dockerfile.prod
-  #   image: micronyks/authapp-prod:1.0.0
-  #   container_name: auth
-  #   ports:
-  #     - "3001:80"
-  #   # volumes:
-  #   #   - ./packages/auth:/app
-  #   # environment:
-  #   #   - CHOCKIDAR_USEPOLLING=true
+  authapp:
+    stdin_open: true
+    tty: true
+    build:
+      context: ./packages/auth
+      dockerfile: Dockerfile.prod
+    image: micronyks/authapp-prod:1.0.0
+    container_name: auth
+    ports:
+      - "3001:80"
+    # volumes:
+    #   - ./packages/auth:/app
+    # environment:
+    #   - CHOCKIDAR_USEPOLLING=true
 
   # commonapp:
   #   build:
@@ -59,11 +59,11 @@ services:
   #     - headerapp
   #     - serverapp
 
-  serverapp:
-    build:
-      context: ./packages/server
-      dockerfile: Dockerfile.prod
-    image: micronyks/serverapp-prod:1.0.0
-    container_name: server
-    ports:
-      - "5000:5000"
+  # serverapp:
+  #   build:
+  #     context: ./packages/server
+  #     dockerfile: Dockerfile.prod
+  #   image: micronyks/serverapp-prod:1.0.0
+  #   container_name: server
+  #   ports:
+  #     - "5000:5000"

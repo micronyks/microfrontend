@@ -6,14 +6,27 @@ COPY package.json .
 
 #RUN npm config set proxy http://localhost:3000
 
-RUN npm install
+RUN npm install --production
 
-COPY . .
+RUN npm run docker:prod:build
+
+RUN npm prune --production
 
 EXPOSE 3000
 
 
-RUN npm run docker:prod:build
+
+
+# stage - 2
+
+FROM node:14-alpine
+
+WORKDIR /app
+
+COPY --from=webapp-build /app/dist/ ./dist  
+COPY --from=webapp-build /app/node_modules/ ./node_modules
+
+
 
 
 
