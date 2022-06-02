@@ -9,3 +9,5 @@ Dockerfile
 .git
 .dockerignore
 .evn
+
+/.vscode

@@ -4,6 +4,7 @@
 /node_modules
 /dist
 /dist-docker-images
+dist-docker-images
 /.pnp
 .pnp.js
 
