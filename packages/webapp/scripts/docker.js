@@ -66,7 +66,7 @@ async function copyDir(src, dest) {
     console.log('.....................................File copied....................................');
 
     console.log('....................................create docker images first....................................')
-    execSync(`cd ../../../ && docker-compose -f docker-compose-create-mfe.yml up -d `)
+    execSync(`cd ../../ && docker-compose -f docker-compose-create-mfe.yml up -d `)
     console.log(`.....................................docker images are created. Check with 'docker image ls' command....................................`)
 
 
