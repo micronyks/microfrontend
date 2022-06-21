@@ -16,3 +16,10 @@ docker-compose*
 README.node_modules
 LICENSE
 .vscode
+
+
+# sonar
+.scannerwork
+
+# vscode
+.vscode

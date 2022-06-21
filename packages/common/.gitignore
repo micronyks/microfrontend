@@ -24,3 +24,9 @@ yarn-debug.log*
 yarn-error.log*
 
 /.vscode
+
+# sonar
+.scannerwork
+
+# vscode
+.vscode

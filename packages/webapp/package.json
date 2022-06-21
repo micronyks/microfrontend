@@ -40,13 +40,8 @@
     "docker:load-mfe": "cd ../../../docker-images/ && docker load < mfe.tar",
     "docker:run-mfe": "cd ../../ && docker-compose -f docker-compose-run-mfe.yml up -d",
     "docker": "node ./scripts/docker.js",
-    "temp": "node ./script/temp.js"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "temp": "node ./script/temp.js",
+    "sonar": "node sonarqube-scanner.js && cd ../auth/ && npm run sonar && cd ../common/ && npm run sonar && cd ../dashboard/ && npm run sonar && cd ../header/ && npm run sonar"
   },
   "browserslist": {
     "production": [
@@ -61,9 +56,19 @@
     ]
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.27.1",
+    "@typescript-eslint/parser": "^5.27.1",
     "adm-zip": "^0.5.9",
     "concurrently": "^7.1.0",
+    "eslint": "^8.17.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-import-resolver-typescript": "^2.7.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.30.0",
+    "eslint-plugin-react-hooks": "^4.5.0",
     "html-webpack-plugin": "^5.5.0",
+    "jest-sonar-reporter": "^2.0.0",
     "sonarqube-scanner": "^2.8.1",
     "webpack": "^5.72.1",
     "webpack-cli": "^4.9.2",

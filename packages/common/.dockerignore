@@ -11,3 +11,9 @@ Dockerfile
 .evn
 
 /.vscode
+
+# sonar
+.scannerwork
+
+# vscode
+.vscode

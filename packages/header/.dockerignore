@@ -9,3 +9,10 @@ Dockerfile
 .git
 .dockerignore
 .evn
+
+
+# sonar
+.scannerwork
+
+# vscode
+.vscode

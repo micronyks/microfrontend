@@ -1,26 +1,31 @@
-import React, { Fragment, Suspense, useEffect, useState } from "react";
-import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import React, {
+  Fragment, Suspense, useEffect, useState,
+} from 'react';
+import {
+  Routes, Route, Navigate, useNavigate,
+} from 'react-router-dom';
 import './App.css';
 
-import ErrorBoundary from "./components/error-boundary.component";
+import ErrorBoundary from './components/error-boundary.component';
 
 // const HeaderApp = React.lazy(() => import("./components/headerapp"));
-import HeaderApp from "./components/headerapp";
-import Loader from "./components/loader";
-import SelectionComponent from "./components/selection.component";
-import { HEADER } from "./core/constants/header.constant";
-import { NAVIGATION } from "./core/constants/navigation.constant";
-import { WIDEUI_AUTH_STORAGE } from "./core/constants/storage.constant";
-const AuthApp = React.lazy(() => import("./components/authapp"));
-const DashboardApp = React.lazy(() => import("./components/dashboardapp"));
+import HeaderApp from './components/headerapp';
+import Loader from './components/loader';
+import SelectionComponent from './components/selection.component';
+import { HEADER } from './core/constants/header.constant';
+import { NAVIGATION } from './core/constants/navigation.constant';
+import { WIDEUI_AUTH_STORAGE } from './core/constants/storage.constant';
+
+const AuthApp = React.lazy(() => import('./components/authapp'));
+const DashboardApp = React.lazy(() => import('./components/dashboardapp'));
 
 // import NotificationModule from "common/NotificationModule";
 
 const notification = {
   title: 'first notification',
   description: 'My First ever notification created !',
-  color: 'red'
-}
+  color: 'red',
+};
 
 const App: React.FC = () => {
   let localStorageData: any = null;
@@ -29,7 +34,6 @@ const App: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-
     if (localStorage.getItem('storage_auth')) {
       localStorageData = JSON.parse(localStorage?.getItem('storage_auth') || '');
     } else {
@@ -50,46 +54,49 @@ const App: React.FC = () => {
       navigate(NAVIGATION.LOGOUT);
       setSelectedMenuItem(value);
     }
-  }
+  };
 
-  return (<Fragment>
+  return (
+    <>
 
-    <header className="webapp-header">
-      <ErrorBoundary>
-        <HeaderApp
-          onProfileMenuClickHandler={onProfileMenuClickHandler}
-          isAuthenticated={isAuthenticated}
-        />
-      </ErrorBoundary>
-    </header>
-
-    {/* <NotificationModule notification={notification} /> */}
-
-    <Suspense fallback={<Loader />}>
-      <section className='webapp-viewport'>
+      <header className="webapp-header">
         <ErrorBoundary>
-          <Routes>
-            <Route
-              path='/auth/*'
-              element={
-                <AuthApp
-                  onAuthChange={setIsAuthenticated}
-                  selectedMenuItem={selectedMenuItem}
-                />
-              } />
-
-            <Route path='/dashboard/*' element={<DashboardApp />} />
-
-            <Route path='/selection' element={<SelectionComponent />} />
-
-            <Route path='/' element={<Navigate to='/auth/login' />} />
-          </Routes>
+          <HeaderApp
+            onProfileMenuClickHandler={onProfileMenuClickHandler}
+            isAuthenticated={isAuthenticated}
+          />
         </ErrorBoundary>
-      </section>
-      <footer className="webapp-footer"><b>@All right reserved!</b></footer>
-    </Suspense>
+      </header>
 
-  </Fragment >)
-}
+      {/* <NotificationModule notification={notification} /> */}
+
+      <Suspense fallback={<Loader />}>
+        <section className="webapp-viewport">
+          <ErrorBoundary>
+            <Routes>
+              <Route
+                path="/auth/*"
+                element={(
+                  <AuthApp
+                    onAuthChange={setIsAuthenticated}
+                    selectedMenuItem={selectedMenuItem}
+                  />
+              )}
+              />
+
+              <Route path="/dashboard/*" element={<DashboardApp />} />
+
+              <Route path="/selection" element={<SelectionComponent />} />
+
+              <Route path="/" element={<Navigate to="/auth/login" />} />
+            </Routes>
+          </ErrorBoundary>
+        </section>
+        <footer className="webapp-footer"><b>@All right reserved!</b></footer>
+      </Suspense>
+
+    </>
+  );
+};
 
 export default App;
