@@ -5,6 +5,8 @@
 /dist
 /.pnp
 .pnp.js
+/dist-docker-images
+dist-docker-images
 
 # testing
 /coverage
