@@ -3,6 +3,10 @@ const { ModuleFederationPlugin } = require('webpack').container;
 const path = require('path');
 const deps = require('./package.json').dependencies;
 
+const env = require("dotenv").config({ path: "./enviornment/.env.development" });
+
+console.log('ENNNNNNNV', process.env.REACT_APP_API_ENDPOINT)
+
 const domain = process.env.PRODUCTION_DOMAIN;
 
 module.exports = {
@@ -10,7 +14,7 @@ module.exports = {
     mode: 'development',
     output: {
         filename: '[name].[contenthash].js',
-      //  publicPath:'/auth/latest/'
+        //  publicPath:'/auth/latest/'
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.js'],
@@ -64,5 +68,10 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './public/index.html',
         }),
+
+        new Dotenv({
+			path: `./enviornment.env.development`
+		}),
+
     ],
 };

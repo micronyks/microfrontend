@@ -2,7 +2,9 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack"); // only add this if you don't have yet
 const { ModuleFederationPlugin } = webpack.container;
 const deps = require("./package.json").dependencies;
-require("dotenv").config({ path: "./.env" });
+const Dotenv = require('dotenv-webpack');
+
+
 const buildDate = new Date().toLocaleString();
 module.exports = (env, argv) => {
   const isProduction = argv.mode === "production";
@@ -75,6 +77,9 @@ module.exports = (env, argv) => {
       }),
       new HtmlWebpackPlugin({
         template: "./public/index.html",
+      }),
+      new Dotenv({
+        path: `./enviornment/.env.development`
       }),
     ],
   };

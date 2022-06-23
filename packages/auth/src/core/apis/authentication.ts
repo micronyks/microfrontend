@@ -1,3 +1,5 @@
+import { ENDPOINTS } from "../constants";
+
 export const authenticateUser = async (credential: any) => {
     const requestOptions = {
         method: 'POST',
@@ -5,5 +7,5 @@ export const authenticateUser = async (credential: any) => {
         body: JSON.stringify({ email: credential.email, password: credential.password })
     };
 
-    return await fetch('http://localhost:5000/login', requestOptions);
+    return await fetch(ENDPOINTS.LOGIN, requestOptions);
 } 

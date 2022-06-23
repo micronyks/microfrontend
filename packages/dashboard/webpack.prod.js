@@ -5,6 +5,7 @@ const path = require('path');
 const deps = require('./package.json').dependencies;
 const buildDate = new Date().toLocaleString();
 const domain = process.env.PRODUCTION_DOMAIN;
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
     entry: './src/index.ts',
@@ -72,5 +73,8 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './public/index.html',
         }),
+        new Dotenv({
+			path: `./enviornment/.env.production`
+		}),
     ],
 };

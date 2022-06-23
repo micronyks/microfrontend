@@ -2,6 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
 const path = require('path');
 const deps = require('./package.json').dependencies;
+const Dotenv = require('dotenv-webpack');
 
 const domain = process.env.PRODUCTION_DOMAIN;
 
@@ -64,5 +65,8 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './public/index.html',
         }),
+        new Dotenv({
+			path: `./enviornment/.env.production`
+		}),
     ],
 };

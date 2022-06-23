@@ -16,6 +16,8 @@ const isEmpty = (value: string) => value.trim() === '';
 const isEmailValid = (value: string) => new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/g).test(value);
 
 const LoginComponent = () => {
+
+    console.log('ENNNNNNNV_Login', process.env.REACT_APP_API_ENDPOINT)
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
