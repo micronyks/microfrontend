@@ -1,6 +1,8 @@
 import { ENDPOINTS } from "../constants";
 
 export const authenticateUser = async (credential: any) => {
+
+    console.log('before hitting : API_ENDPOINT env variable#######', process.env.API_ENDPOINT)
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
