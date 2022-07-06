@@ -28,6 +28,8 @@ const notification = {
 };
 
 const App: React.FC = () => {
+
+  console.log('API_ENDPOINT env variable#######', process.env.API_ENDPOINT)
   let localStorageData: any = null;
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [selectedMenuItem, setSelectedMenuItem] = useState('');

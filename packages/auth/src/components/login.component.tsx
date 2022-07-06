@@ -17,7 +17,7 @@ const isEmailValid = (value: string) => new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.
 
 const LoginComponent = () => {
 
-    console.log('API_ENDPOINT env variable', process.env.API_ENDPOINT)
+    console.log('API_ENDPOINT env variable#######', process.env.API_ENDPOINT)
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
