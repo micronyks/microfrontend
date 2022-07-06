@@ -18,7 +18,7 @@ const authSlice = createSlice({
       localStorage.setItem('storage_auth', JSON.stringify(auth));
 
       // navigate after login
-      state.navigatingTo = ROUTE.SELECTION;
+      state.navigatingTo = ROUTE.DASHBOARD;
     },
     logout(state) {
       state.isAuthenticated = false;
