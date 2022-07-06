@@ -6,6 +6,8 @@ const Dotenv = require('dotenv-webpack');
 
 const domain = process.env.PRODUCTION_DOMAIN;
 
+console.log('what is this', process.env.API_ENDPOINT)
+
 module.exports = {
     entry: './src/index.ts',
     mode: 'production',
