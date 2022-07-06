@@ -1,31 +1,31 @@
-name: deploy-docker-images-to-S3-bucket
+# name: deploy-docker-images-to-S3-bucket
 
-on: [push]
+# on: [push]
 
-# on:
-#   push:
-#     branches:
-#       - main
-#       - master
-#     paths:
-#       - 'packages/auth/**'
+# # on:
+# #   push:
+# #     branches:
+# #       - main
+# #       - master
+# #     paths:
+# #       - 'packages/auth/**'
 
-defaults:
-  run:
-    working-directory: packages/webapp
+# defaults:
+#   run:
+#     working-directory: packages/webapp
 
-jobs:
-  build:
-    runs-on:  ubuntu-latest
+# jobs:
+#   build:
+#     runs-on:  ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v2
-      - run: npm install
-      - run: npm run docker
+#     steps:
+#       - uses: actions/checkout@v2
+#       - run: npm install
+#       - run: npm run docker
 
-      - uses: shinyinc/action-aws-cli@v1.2
-      - run: aws s3 sync dist-docker-images s3://${{ secrets.AWS_S3_BUCKET_NAME }}/docker-images
-        env: 
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: 'ap-south-1'
+#       - uses: shinyinc/action-aws-cli@v1.2
+#       - run: aws s3 sync dist-docker-images s3://${{ secrets.AWS_S3_BUCKET_NAME }}/docker-images
+#         env: 
+#           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#           AWS_DEFAULT_REGION: 'ap-south-1'
