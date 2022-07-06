@@ -15,17 +15,20 @@ app.use(cors());
 
 app.use(express.json());
 
-app.get('/',(req, res)=>{
-    try{
-        Promise.all([fetchFile.getFileFromS3('mock/i.json')])
-        .then((result)=>{
-              res.send(result)
-        })
-    }catch(e){
-        res.send(e);
-    }  
-})
+// app.get('/',(req, res)=>{
+//     try{
+//         Promise.all([fetchFile.getFileFromS3('mock/i.json')])
+//         .then((result)=>{
+//               res.send(result)
+//         })
+//     }catch(e){
+//         res.send(e);
+//     }  
+// })
 
+app.get('/', (req, res)=>{
+     res.send('Hellow world');
+})
 
 app.post('/login', (req, res) => {
 
