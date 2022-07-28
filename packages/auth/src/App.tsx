@@ -54,7 +54,7 @@ const App: React.FC<{ history: any, navigateTo: (navigateTo: string) => void, is
 
   useLayoutEffect(() => props?.history?.listen(setState), [props?.history])
 
-  return (<div>
+  return (<div id="loginContainer">
     <Router {...props} location={state?.location} navigator={props?.history} navigationType={state?.action}>
       <Routes >
         <Route path='/auth/login' element={<LoginComponent />} />

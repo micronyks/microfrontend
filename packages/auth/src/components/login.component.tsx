@@ -4,7 +4,7 @@ import './login.component.css';
 
 // custom imports
 import { ROUTE } from '../core/constants/route.constant';
-import Button from '@mui/material/Button/Button';
+import Button from '@mui/material/Button';
 import { useDispatch } from 'react-redux';
 import { authActions } from '../core/store/auth.store';
 import { useRef, useState } from 'react';
@@ -137,8 +137,9 @@ const LoginComponent = () => {
                     color='primary'
                     type='submit'
                     variant='contained'
+                    id="signInButton"
                 >
-                    Login
+                    Sign in
                 </Button>
 
             </Typography>

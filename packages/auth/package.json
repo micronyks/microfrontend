@@ -16,6 +16,7 @@
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.13",
     "axios": "^0.26.1",
+    "process": "^0.11.10",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
@@ -36,6 +37,7 @@
     "serve": "serve dist -p 3001",
     "clean": "rm -rf dist",
     "test": "react-scripts test",
+    "test:report": "npm run test -- --watchAll=false --coverage --testResultsProcessor jest-sonar-reporter",
     "eject": "react-scripts eject",
     "sonar": "node sonarqube-scanner.js"
   },
@@ -58,7 +60,11 @@
     ]
   },
   "devDependencies": {
+    "@types/enzyme": "^3.10.12",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.7",
     "dotenv-webpack": "^7.1.0",
+    "enzyme": "^3.11.0",
+    "enzyme-to-json": "^3.6.2",
     "html-webpack-plugin": "^5.5.0",
     "sonarqube-scanner": "^2.8.1",
     "webpack": "^5.72.1",

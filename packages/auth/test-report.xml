@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testExecutions version="1">
+  <file path="D:\microfrontend\packages\auth\src\components\login.component.test.tsx">
+    <testCase name="Login Component should display a blank login form" duration="1175"/>
+  </file>
+</testExecutions>

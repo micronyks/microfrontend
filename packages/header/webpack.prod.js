@@ -23,23 +23,14 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: [
-                    "style-loader",
-                    {
-                        loader: "css-loader",
-                        options: {
-                            importLoaders: 1,
-                            modules: true,
-                        },
-                    },
-                ],
-                include: /\.module\.css$/,
-            },
-            {
-                test: /\.css$/,
                 use: ["style-loader", "css-loader"],
                 exclude: /\.module\.css$/,
             },
+            {
+                test: /\.(png|jpg|gif|jpeg|ico|svg)$/i, type: "asset", parser: {
+                    dataUrlCondition: { maxSize: 8192 }
+                }
+            }
         ],
     },
     plugins: [
@@ -64,7 +55,7 @@ module.exports = {
             template: './public/index.html',
         }),
         new Dotenv({
-			path: `./enviornment/.env.production`
-		}),
+            path: `./enviornment/.env.production`
+        }),
     ],
 };
