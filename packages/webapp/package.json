@@ -34,7 +34,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "backup": "node ./scripts/backup.js",
-    "wideui": "concurrently --kill-others \"cd ../auth/ && npm run start\" \"cd ../common/ && npm run start\" \"cd ../dashboard/ && npm run start\" \"cd ../header/ && npm run start\" \"npm run start\"",
+    "mfe": "concurrently --kill-others \"cd ../auth/ && npm run start\" \"cd ../common/ && npm run start\" \"cd ../dashboard/ && npm run start\" \"cd ../header/ && npm run start\" \"npm run start\"",
     "docker:create-mfe": "cd ../../ && docker-compose -f docker-compose-create-mfe.yml up -d",
     "docker:save-mfe": "docker save -o ../../../docker-images/mfe.tar micronyks/authapp-prod:1.0.0 micronyks/commonapp-prod:1.0.0 micronyks/dashboardapp-prod:1.0.0 micronyks/headerapp-prod:1.0.0 micronyks/webapp-prod:1.0.0 micronyks/serverapp-prod:1.0.0",
     "docker:load-mfe": "cd ../../../docker-images/ && docker load < mfe.tar",
